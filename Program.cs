@@ -10,7 +10,7 @@ class Program
     {      
         while (true)
         {
-       
+            Console.WriteLine("-------------------");
             Console.WriteLine("Виберіть завдання:");
             Console.WriteLine("1. Завдання номер 1");
             Console.WriteLine("2. Завдання номер 2");
@@ -20,8 +20,9 @@ class Program
             Console.WriteLine("6. Завдання номер 6");
             Console.WriteLine("7. Завдання номер 7");
             Console.WriteLine("8. Завдання номер 8");
+            Console.WriteLine("-------------------");
             Console.Write("Номер завдання (або 'n' для виходу): ");
-            string input = Console.ReadLine();
+            string input = Console.ReadLine();       
             Console.Clear();
             if (input.ToLower() == "n")
             {
@@ -71,18 +72,20 @@ class Program
         
         while (true)
         {
-            Console.Write("добавьте число в массив - ");
+            Console.Write("добавьте число в массив ('n'- щоб закінчити) - ");
             string input = Console.ReadLine();
             if (input.ToLower() == "n")
             {
+                Console.WriteLine("-------------------");
                 break;
             }
             else if (int.TryParse(input, out int num))
             {
                 Array.Resize(ref numbers, numbers.Length + 1);
                 numbers[numbers.Length - 1] = num;
-            }
+            }       
             Console.WriteLine("Массив: " + string.Join(", ", numbers));
+            Console.WriteLine("-------------------");
         }
     }
     
@@ -182,10 +185,7 @@ class Program
     }
     static void IndexFind()
     {
-        ADDarray();
-        int sum = 0;
-        while (true)
-        {
+        ADDarray();         
             Console.Write("елемент масива - ");
             string elem = Console.ReadLine();
             int.TryParse(elem, out int element);
@@ -201,7 +201,7 @@ class Program
                 }
                 numbers = new int[0];
                 break;
-            }
+            
         }
     }
     static void Sum1()
@@ -240,9 +240,11 @@ class Program
         {
             Console.Write("Введіть кількість рядків: ");
              rows = int.Parse(Console.ReadLine());
+            Console.WriteLine("-------------------");
             Console.Write("Введіть кількість стовпчиків: ");
-             cols = int.Parse(Console.ReadLine());                            
-                matrix = new int[rows, cols];
+             cols = int.Parse(Console.ReadLine());
+            Console.WriteLine("-------------------");
+            matrix = new int[rows, cols];
 
                 for (int i = 0; i < rows; i++)
                 {
@@ -253,6 +255,7 @@ class Program
                      }
                 
                 }
+            Console.WriteLine("-------------------");
             Console.WriteLine("Матриця:");
             for (int i = 0; i < rows; i++)
                 {
@@ -260,8 +263,9 @@ class Program
                 {
                     Console.Write(matrix[i, j] + "\t");
                 }
-                Console.WriteLine();
+                Console.WriteLine();             
             }
+            Console.WriteLine("-------------------");
 
             break;       
         }
