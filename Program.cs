@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
 using System.Text;
 
 class Program
 {
-
     static void Main()
     {      
         while (true)
@@ -65,50 +65,60 @@ class Program
         }
    
     }
-    static void Avg()
+    public static int[] numbers = new int[0];
+    public static void ADDarray() 
     {
-        int[] numbers = new int[0];
+        
         while (true)
         {
             Console.Write("добавьте число в массив - ");
             string input = Console.ReadLine();
             if (input.ToLower() == "n")
             {
-                int sum = 0;
-                int array_numbers = numbers.Length;
-                double avg_array = 0;
-                foreach (int num in numbers)
-                {
-                    sum += num;
-                    avg_array = sum / array_numbers;
-
-                }
-                Console.WriteLine($"середнє арифметичне всіх елементів у заданому масиві цілих чисел - {avg_array} ");
                 break;
             }
-            else if (int.TryParse(input,out int num))
+            else if (int.TryParse(input, out int num))
             {
                 Array.Resize(ref numbers, numbers.Length + 1);
                 numbers[numbers.Length - 1] = num;
             }
             Console.WriteLine("Массив: " + string.Join(", ", numbers));
         }
+    }
+    
+    static void Avg()
+    {
+        ADDarray();
+        
+        while (true)
+        {                               
+           int sum = 0;
+           int array_numbers = numbers.Length;
+           double avg_array = 0;
+           foreach (int num in numbers)
+           {
+               sum += num;
+               avg_array = sum / array_numbers;
+
+           }
+           Console.WriteLine($"середнє арифметичне всіх елементів у заданому масиві цілих чисел - {avg_array} ");
+            numbers = new int[0];
+            break;
+                     
+        }
 
     }
     static void Palindrome()
     {
-        int[] numbers = new int[0];
+        ADDarray();       
         bool check = true;
         while (true)
-        {
-            Console.Write("добавьте число в массив - ");
-            string input = Console.ReadLine();
-            if (input.ToLower() == "n")
-            {
-                int length = numbers.Length;
-                for (int i = 0; i < length / 2; i++)
+        {  
+            
+            int length = numbers.Length;
+            for (int i = 0; i < length / 2; i++)
                 {
-                    if (numbers[i] != numbers[length - 1 - i])
+                if (numbers[i] != numbers[length - 1 - i])
                     {
                         check = false;
                         break;
@@ -122,219 +132,155 @@ class Program
                 {
                     Console.WriteLine("Масив не є паліндромом.");
                 }
-                
-                break;
-            }
-            else if (int.TryParse(input, out int num))
-            {
-                Array.Resize(ref numbers, numbers.Length + 1);
-                numbers[numbers.Length - 1] = num;
-            }
-            Console.WriteLine("Массив: " + string.Join(", ", numbers));
+            numbers = new int[0];
+            break;                     
         }
 
     }
     static void Parni()
     {
-        int[] numbers = new int[0];
+        ADDarray();       
         StringBuilder parni_chysla = new StringBuilder();
         while (true)
         {
-            Console.Write("добавьте число в массив - ");
-            string input = Console.ReadLine();
-            if (input.ToLower() == "n")
+            bool first = true;
+            foreach (int number in numbers)
             {
-                bool first = true;
-
-                foreach (int number in numbers)
+                if (number % 2 == 0)
                 {
-                    if (number % 2 == 0)
+                    if (!first)
                     {
-                        if (!first)
-                        {
-                            parni_chysla.Append(", ");
-                        }
-                        parni_chysla.Append(number);
-                        first = false;
+                        parni_chysla.Append(", ");
                     }
+                    parni_chysla.Append(number);
+                    first = false;
                 }
-                Console.WriteLine($"Парні числа: {parni_chysla}");
-                break;
             }
-
-            else if (int.TryParse(input, out int num))
-            {
-                Array.Resize(ref numbers, numbers.Length + 1);
-                numbers[numbers.Length - 1] = num;
-            }
-            Console.WriteLine("Массив: " + string.Join(", ", numbers));
-        }
-
+            Console.WriteLine($"Парні числа: {parni_chysla}");
+            numbers = new int[0];
+            break;
+        }          
+        
     }
     static void Sum()
     {
-        int[] numbers = new int[0];
+        ADDarray();      
         int sum = 0;
         while (true)
-        {
-            Console.Write("добавьте число в массив - ");
-            string input = Console.ReadLine();
-            if (input.ToLower() == "n")
-            {
-                foreach (int number in numbers)
+        {         
+            foreach (int number in numbers)
                 {
-                    if (number > 0)
+                 if (number > 0)
                     {
                         sum += number;
                     }
                 }
                 Console.WriteLine($"Сума додатніх чисел - {sum}");
-
-                break;
-            }
-
-            else if (int.TryParse(input, out int num))
-            {
-                Array.Resize(ref numbers, numbers.Length + 1);
-                numbers[numbers.Length - 1] = num;
-            }
-            Console.WriteLine("Массив: " + string.Join(", ", numbers));
-        }
-
+            numbers = new int[0];
+            break;
+            }                
     }
     static void IndexFind()
     {
-        int[] numbers = new int[0];
+        ADDarray();
         int sum = 0;
         while (true)
         {
-            Console.Write("добавьте число в массив - ");
-            string input = Console.ReadLine();
-            if (input.ToLower() == "n")
-            {
-                Console.Write("елемент масива - ");
-                string elem = Console.ReadLine();
-                int.TryParse(elem, out int element);
+            Console.Write("елемент масива - ");
+            string elem = Console.ReadLine();
+            int.TryParse(elem, out int element);
 
-                for (int i = 0; i < numbers.Length; i++)
+            for (int i = 0; i < numbers.Length; i++)
+            {
+
+                if (numbers[i] == element)
                 {
-                        if (numbers[i] == element)
-                    {
-                        Console.WriteLine($"Найменший індекс елемента {element} - {i} ");
-                        break;
-                    }                                                       
-                }            
+                    Console.WriteLine($"Найменший індекс елемента {element} - {i} ");
+                    break;
+
+                }
+                numbers = new int[0];
                 break;
             }
-
-            else if (int.TryParse(input, out int num))
-            {
-                Array.Resize(ref numbers, numbers.Length + 1);
-                numbers[numbers.Length - 1] = num;
-            }
-            Console.WriteLine("Массив: " + string.Join(", ", numbers));
         }
-
     }
     static void Sum1()
     {
-        int[] numbers = new int[0];
+        ADDarray();
         int product = 1;
         while (true)
-        {
-            Console.Write("добавьте число в массив - ");
-            string input = Console.ReadLine();
-            if (input.ToLower() == "n")
-            {
-                foreach (int number in numbers)
-                {
+        {          
+            foreach (int number in numbers)
+              {
                     if (number < 0)
                     {
                         product *= number;
                     }
                 }
-                Console.WriteLine($"Добуток від'ємних чисел - {product}");
-
-                break;
+            if (product != 1) 
+            { 
+            Console.WriteLine($"Добуток від'ємних чисел - {product}");
+            numbers = new int[0];
             }
-
-            else if (int.TryParse(input, out int num))
+            else 
             {
-                Array.Resize(ref numbers, numbers.Length + 1);
-                numbers[numbers.Length - 1] = num;
+                Console.WriteLine("Від'ємних чисел немає");
             }
-            Console.WriteLine("Массив: " + string.Join(", ", numbers));
+            break;                    
         }
 
+    }
+
+    public static int cols = 1;
+    public static int rows = 1;
+    public static int[,] matrix = new int[rows, cols];
+    public static void Addmatrix()
+    {
+        while (true)
+        {
+            Console.Write("Введіть кількість рядків: ");
+             rows = int.Parse(Console.ReadLine());
+            Console.Write("Введіть кількість стовпчиків: ");
+             cols = int.Parse(Console.ReadLine());                            
+                matrix = new int[rows, cols];
+
+                for (int i = 0; i < rows; i++)
+                {
+                    for (int j = 0; j < cols; j++)
+                    {
+                        Console.Write($"Введіть елемент [{i},{j}]: ");
+                        matrix[i, j] = int.Parse(Console.ReadLine());                       
+                     }
+                
+                }
+            Console.WriteLine("Матриця:");
+            for (int i = 0; i < rows; i++)
+                {
+                for (int j = 0; j < cols; j++)
+                {
+                    Console.Write(matrix[i, j] + "\t");
+                }
+                Console.WriteLine();
+            }
+
+            break;       
+        }
     }
     static void Matrix()
     {
-        while (true)
+        Addmatrix();    
+        int sum = 0;
+        for (int i = 0; i < Math.Min(rows, cols); i++)
         {
-            Console.Write("Введіть кількість рядків: ");
-            string input = Console.ReadLine();
-            if (input.ToLower() == "n") 
-            {
-                break;
-            }
-            else if (int.TryParse(input, out int rows))
-            {
-                Console.Write("Введіть кількість стовпчиків: ");
-                int cols = int.Parse(Console.ReadLine());
-
-                int[,] matrix = new int[rows, cols];
-
-                for (int i = 0; i < rows; i++)
-                {
-                    for (int j = 0; j < cols; j++)
-                    {
-                        Console.Write($"Введіть елемент [{i},{j}]: ");
-                        matrix[i, j] = int.Parse(Console.ReadLine());
-                    }
-                }
-                int sum = 0;
-                for (int i = 0; i < Math.Min(rows, cols); i++)
-                {
                     sum += matrix[i, i];
-                }           
+         }           
                 Console.WriteLine($"Сума елементів на головній діагоналі: {sum}");         
-             }                          
-        }
-    }
+             }                                
+    
     static void Matrix90()
     {
-        while (true)
-        {
-            Console.Write("Введіть кількість рядків: ");
-            string input = Console.ReadLine();
-            if (input.ToLower() == "n")
-            {
-                break;
-            }
-            else if (int.TryParse(input, out int rows))
-            {
-                Console.Write("Введіть кількість стовпчиків: ");
-                int cols = int.Parse(Console.ReadLine());
-
-                int[,] matrix = new int[rows, cols];
-
-                for (int i = 0; i < rows; i++)
-                {
-                    for (int j = 0; j < cols; j++)
-                    {
-                        Console.Write($"Введіть елемент [{i},{j}]: ");
-                        matrix[i, j] = int.Parse(Console.ReadLine());
-                    }
-                }
-                Console.WriteLine("Матриця:");
-                for (int i = 0; i < rows; i++)
-                {
-                    for (int j = 0; j < cols; j++)
-                    {
-                        Console.Write(matrix[i, j] + "\t");
-                    }
-                    Console.WriteLine();
-                }
+        Addmatrix();
+        
                 Console.WriteLine("Матриця90:");
                 for (int j = cols - 1; j >= 0; j--)
                 {
@@ -343,10 +289,7 @@ class Program
                         Console.Write(matrix[i, j] + "\t");
                     }
                     Console.WriteLine();
-                }
-
-            }
-        }
+                }               
     }
 }
     
