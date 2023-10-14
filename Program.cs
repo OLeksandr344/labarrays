@@ -197,11 +197,7 @@ class Program
                 {
                     Console.WriteLine($"Найменший індекс елемента {element} - {i} ");
                     break;
-
-                }
-                numbers = new int[0];
-                break;
-            
+                }              
         }
     }
     static void Sum1()
