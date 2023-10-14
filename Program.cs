@@ -196,6 +196,7 @@ class Program
                 if (numbers[i] == element)
                 {
                     Console.WriteLine($"Найменший індекс елемента {element} - {i} ");
+                    numbers = new int[0];
                     break;
                 }              
         }
