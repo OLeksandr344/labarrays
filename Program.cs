@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
@@ -69,7 +69,7 @@ class Program
     public static int[] numbers = new int[0];
     public static void ADDarray() 
     {
-        
+        numbers = new int[0];
         while (true)
         {
             Console.Write("добавьте число в массив ('n'- щоб закінчити) - ");
@@ -105,7 +105,7 @@ class Program
 
            }
            Console.WriteLine($"середнє арифметичне всіх елементів у заданому масиві цілих чисел - {avg_array} ");
-            numbers = new int[0];
+            
             break;
                      
         }
@@ -115,6 +115,7 @@ class Program
     {
         ADDarray();       
         bool check = true;
+        numbers = new int[0];
         while (true)
         {  
             
@@ -135,7 +136,7 @@ class Program
                 {
                     Console.WriteLine("Масив не є паліндромом.");
                 }
-            numbers = new int[0];
+            
             break;                     
         }
 
@@ -160,7 +161,7 @@ class Program
                 }
             }
             Console.WriteLine($"Парні числа: {parni_chysla}");
-            numbers = new int[0];
+            
             break;
         }          
         
@@ -179,26 +180,27 @@ class Program
                     }
                 }
                 Console.WriteLine($"Сума додатніх чисел - {sum}");
-            numbers = new int[0];
+            
             break;
             }                
     }
     static void IndexFind()
     {
         ADDarray();         
-            Console.Write("елемент масива - ");
-            string elem = Console.ReadLine();
-            int.TryParse(elem, out int element);
+        Console.Write("елемент масива - ");
+        string elem = Console.ReadLine();
+        int.TryParse(elem, out int element);
 
-            for (int i = 0; i < numbers.Length; i++)
+        for (int i = 0; i < numbers.Length; i++)
+        {
+
+            if (numbers[i] == element)
             {
-
-                if (numbers[i] == element)
-                {
-                    Console.WriteLine($"Найменший індекс елемента {element} - {i} ");
-                    numbers = new int[0];
-                    break;
-                }              
+                Console.WriteLine($"Найменший індекс елемента {element} - {i} ");
+                
+                break;
+            }                 
+        
         }
     }
     static void Sum1()
@@ -217,7 +219,7 @@ class Program
             if (product != 1) 
             { 
             Console.WriteLine($"Добуток від'ємних чисел - {product}");
-            numbers = new int[0];
+            
             }
             else 
             {
@@ -242,7 +244,6 @@ class Program
              cols = int.Parse(Console.ReadLine());
             Console.WriteLine("-------------------");
             matrix = new int[rows, cols];
-
                 for (int i = 0; i < rows; i++)
                 {
                     for (int j = 0; j < cols; j++)
@@ -292,5 +293,13 @@ class Program
                     Console.WriteLine();
                 }               
     }
+    public int[,] mat = new int[3,3]
+    {
+        { 1,3,3},
+        { 2,1,2},
+        { 3,1,1}
+    };
+    
+    
 }
     
