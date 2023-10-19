@@ -113,30 +113,24 @@ class Program
     }
     static void Palindrome()
     {
-        ADDarray();       
-        bool check = true;
-        numbers = new int[0];
+        ADDarray();             
         while (true)
         {  
-            
+            string result = "";
             int length = numbers.Length;
             for (int i = 0; i < length / 2; i++)
                 {
                 if (numbers[i] != numbers[length - 1 - i])
                     {
-                        check = false;
+                        result = "Масив не є паліндромом.";
                         break;
                     }
-                }
-                if (check)
-                {
-                    Console.WriteLine("Масив є паліндромом.");
-                }
                 else
                 {
-                    Console.WriteLine("Масив не є паліндромом.");
+                    result = "Масив є паліндромом.";
                 }
-            
+            }
+            Console.WriteLine(result);
             break;                     
         }
 
