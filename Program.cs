@@ -137,25 +137,20 @@ class Program
     }
     static void Parni()
     {
-        ADDarray();       
-        StringBuilder parni_chysla = new StringBuilder();
+        ADDarray();               
         while (true)
         {
-            bool first = true;
+            string parni_chysla_str = "";
+            List<int> parni_chysla = new List<int>();
             foreach (int number in numbers)
             {
                 if (number % 2 == 0)
                 {
-                    if (!first)
-                    {
-                        parni_chysla.Append(", ");
-                    }
-                    parni_chysla.Append(number);
-                    first = false;
+                    parni_chysla.Add(number);
+                    parni_chysla_str = string.Join(", ", parni_chysla);                                     
                 }
             }
-            Console.WriteLine($"Парні числа: {parni_chysla}");
-            
+            Console.WriteLine($"Парні числа: {parni_chysla_str}");            
             break;
         }          
         
