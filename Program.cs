@@ -95,10 +95,10 @@ class Program
         
         while (true)
         {                               
-           int sum = 0;
-           int array_numbers = numbers.Length;
+           double sum = 0;
+           double array_numbers = numbers.Length;
            double avg_array = 0;
-           foreach (int num in numbers)
+           foreach (double num in numbers)
            {
                sum += num;
                avg_array = sum / array_numbers;
